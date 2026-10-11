@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santos Tenorio | Finance & Business Analytics</title>
+<meta name="description" content="Santos Tenorio, Finance student at Rutgers Business School focused on investing, financial modeling, and analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --scarlet: #CC0033;
+    --scarlet-tint: #FCEBEF;
+    --black: #000000;
+    --gray: #5F6A72;
+    --line: #E2E4E6;
+    --paper: #FFFFFF;
+    --mist: #F6F6F7;
+    --sans: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--black); background: var(--paper); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--black); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+
+  /* Navigation */
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .monogram { font-weight: 800; font-size: 1.1rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .monogram span { display: grid; place-items: center; width: 34px; height: 34px; background: var(--scarlet); color: #fff; font-size: .95rem; border-radius: 3px; }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul a { text-decoration: none; font-size: .95rem; font-weight: 500; color: var(--gray); padding: 4px 0; border-bottom: 2px solid transparent; }
+  nav ul a:hover { color: var(--black); border-bottom-color: var(--scarlet); }
+
+  /* Hero */
+  .hero { background: var(--scarlet); color: #fff; padding: 96px 0 88px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: var(--black); }
+  .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .hero h1 { font-weight: 800; font-size: clamp(3rem, 9vw, 6.5rem); line-height: .95; letter-spacing: -0.03em; max-width: 10ch; }
+  .hero .tagline { font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight: 500; margin-top: 24px; color: rgba(255,255,255,.92); }
+  .headshot { width: 260px; height: 260px; flex-shrink: 0; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 6px var(--black); }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: .98rem; padding: 13px 24px; border-radius: 3px; border: 2px solid #fff; transition: background .15s, color .15s; }
+  .btn-solid { background: #fff; color: var(--scarlet); }
+  .btn-solid:hover { background: var(--black); border-color: var(--black); color: #fff; }
+  .btn-ghost { color: #fff; }
+  .btn-ghost:hover { background: #fff; color: var(--scarlet); }
+  .hero a:focus-visible { outline-color: #fff; }
+
+  /* Sections */
+  section { padding: 88px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .section-grid { display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; padding-top: 14px; border-top: 4px solid var(--scarlet); align-self: start; }
+  .lead { font-family: var(--serif); font-size: 1.2rem; line-height: 1.7; max-width: 36em; }
+
+  /* Personal statement */
+  .statement { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.35; max-width: 26em; padding-left: 24px; border-left: 6px solid var(--scarlet); }
+
+  /* Skills */
+  .skill-groups { display: grid; gap: 30px; }
+  .skill-groups h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+  .chips li { font-size: .95rem; font-weight: 600; padding: 8px 16px; border-radius: 3px; background: var(--scarlet-tint); color: var(--scarlet); border: 1px solid #F3C2CD; }
+  .chips.featured li { background: var(--scarlet); color: #fff; border-color: var(--scarlet); }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .project { border: 1px solid var(--line); border-top: 4px solid var(--scarlet); padding: 26px; display: flex; flex-direction: column; gap: 12px; }
+  .project .kind { font-size: .88rem; font-weight: 600; color: var(--gray); }
+  .project h3 { font-size: 1.2rem; font-weight: 800; line-height: 1.25; }
+  .project p { color: #333; font-size: .98rem; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { font-size: .85rem; font-weight: 500; color: #333; background: var(--mist); padding: 4px 10px; border-radius: 2px; }
+  .project a { font-weight: 600; color: var(--scarlet); text-decoration: none; font-size: .95rem; }
+  .project a:hover { text-decoration: underline; }
+
+  /* Education */
+  .edu-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; }
+  .edu-school { font-size: 1.3rem; font-weight: 800; }
+  .gpa { font-weight: 600; color: var(--scarlet); }
+  .edu-degree { margin-top: 4px; }
+  .facts { margin-top: 24px; display: grid; gap: 18px; }
+  .facts h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+
+  /* Timeline */
+  .timeline { list-style: none; border-left: 2px solid var(--line); }
+  .timeline > li { position: relative; padding: 0 0 44px 32px; }
+  .timeline > li:last-child { padding-bottom: 0; }
+  .timeline > li::before { content: ""; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--scarlet); }
+  .role { font-size: 1.2rem; font-weight: 600; }
+  .org { color: var(--scarlet); font-weight: 600; }
+  .when { color: var(--gray); font-size: .92rem; margin-top: 2px; }
+  .bullets { margin: 12px 0 0 18px; max-width: 40em; color: #222; }
+  .bullets li { margin-bottom: 6px; padding-left: 4px; }
+  .bullets li::marker { color: var(--scarlet); }
+
+  /* Contact */
+  .contact { background: var(--black); color: #fff; padding: 88px 0; }
+  .contact .lead { color: rgba(255,255,255,.85); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .contact .btn-solid { color: var(--black); }
+  .contact .btn-solid:hover { background: var(--scarlet); border-color: var(--scarlet); color: #fff; }
+  .contact .btn-ghost:hover { color: var(--black); }
+  .contact a:focus-visible { outline-color: #fff; }
+  .email-text { margin-top: 18px; color: rgba(255,255,255,.7); font-size: .95rem; }
+  footer { background: var(--black); color: rgba(255,255,255,.55); font-size: .88rem; padding: 0 0 36px; }
+  footer .wrap { border-top: 1px solid #333; padding-top: 24px; }
+
+  @media (max-width: 760px) {
+    nav ul { gap: 18px; }
+    nav ul li.hide-sm { display: none; }
+    .hero { padding: 72px 0 68px; }
+    .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 32px; }
+    .headshot { width: 160px; height: 160px; border-width: 4px; box-shadow: 0 0 0 4px var(--black); }
+    section, .contact { padding: 64px 0; }
+    .section-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#top" class="monogram"><span>ST</span>Santos Tenorio</a>
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="hide-sm"><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <h1>Santos Tenorio</h1>
+      <p class="tagline">Finance &amp; Business Analytics · Rutgers Business School · Class of 2028</p>
+      <div class="actions">
+        <a class="btn btn-solid" href="resume.pdf">View resume</a>
+        <a class="btn btn-ghost" href="#projects">See my projects</a>
+      </div>
+    </div>
+    <!-- Upload your photo to the repo as headshot.jpg. It stays hidden until the file exists. -->
+    <img class="headshot" src="headshot.jpg" alt="Santos Tenorio" onerror="this.style.display='none'">
+  </div>
+</header>
+
+<main>
+  <!-- 1. PERSONAL STATEMENT -->
+  <section id="statement">
+    <div class="wrap section-grid">
+      <h2>Personal statement</h2>
+      <p class="statement">I'm a Rutgers finance student who combines anti-money laundering experience, investment banking training, and data skills in SQL and Python to analyze companies and risk, and I'm building a career in investing.</p>
+    </div>
+  </section>
+
+  <!-- 2. SKILLS -->
+  <section id="skills">
+    <div class="wrap section-grid">
+      <h2>Skills</h2>
+      <div class="skill-groups">
+        <div>
+          <h3>Technical</h3>
+          <ul class="chips featured">
+            <li>SQL</li>
+            <li>Python</li>
+            <li>Tableau</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Finance</h3>
+          <ul class="chips">
+            <li>Financial modeling</li>
+            <li>Company valuation</li>
+            <li>Capital structure analysis</li>
+            <li>M&amp;A analysis</li>
+            <li>Equity &amp; fixed-income analysis</li>
+            <li>AML &amp; transaction monitoring</li>
+            <li>SAR preparation</li>
+            <li>Risk assessment</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Professional</h3>
+          <ul class="chips">
+            <li>Bilingual: English &amp; Spanish</li>
+            <li>Data analysis &amp; reporting</li>
+            <li>Event &amp; operations coordination</li>
+            <li>Team training</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROJECTS -->
+  <section id="projects">
+    <div class="wrap section-grid">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="kind">SEO Career · AIIB Fellowship</div>
+          <h3>Company valuation &amp; financial model</h3>
+          <p>Built a dynamic financial model and valuation of a company, analyzing its capital structure and running scenarios to estimate what the business is worth.</p>
+          <div class="tags"><span>Financial modeling</span><span>Valuation</span><span>Excel</span></div>
+          <!-- Optional: upload the model to your repo and link it, e.g. <a href="valuation-model.xlsx">Download model</a> -->
+        </article>
+        <article class="project">
+          <div class="kind">Little Investment Bankers of Rutgers</div>
+          <h3>Student-led equity valuation</h3>
+          <p>Collaborated with a student team to analyze a company in the equity markets, build a valuation model, and present an investment view.</p>
+          <div class="tags"><span>Equity research</span><span>Modeling</span><span>Teamwork</span></div>
+        </article>
+        <article class="project">
+          <div class="kind">ALPFA</div>
+          <h3>Finance data analysis &amp; dashboard</h3>
+          <p>Used SQL to pull and clean financial data, Python to analyze it, and Tableau to visualize the results in a dashboard that tells a clear story.</p>
+          <div class="tags"><span>SQL</span><span>Python</span><span>Tableau</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap section-grid">
+      <h2>Education</h2>
+      <div>
+        <div class="edu-head">
+          <div class="edu-school">Rutgers University, New Brunswick</div>
+          <div class="gpa">GPA 3.65</div>
+        </div>
+        <div class="edu-degree">Bachelor of Science in Finance, Concentration in Business Analytics and Information Technology (BAIT)</div>
+        <div class="when">Expected May 2028</div>
+        <div class="facts">
+          <div>
+            <h3>Awards</h3>
+            <div class="tags">
+              <span>RBS High Achieving Academic Performance Scholar</span>
+              <span>Educational Opportunity Fund Scholar</span>
+            </div>
+          </div>
+          <div>
+            <h3>Relevant coursework</h3>
+            <div class="tags">
+              <span>Financial Accounting</span><span>Microeconomics</span><span>Macroeconomics</span>
+              <span>Statistics for Business</span><span>Financial Management</span>
+              <span>Investment Analysis</span><span>Intro to Supply Chain Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap section-grid">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="role">Anti-Money Laundering Summer Intern</div>
+          <div class="org">Stash Financial, Inc.</div>
+          <div class="when">New York, NY · June 2025 – August 2025</div>
+          <ul class="bullets">
+            <li>Investigated 40+ high-risk accounts and transaction alerts weekly, identifying red flags and escalating confirmed fraud and money laundering to senior analysts</li>
+            <li>Aggregated and analyzed data for 15+ Suspicious Activity Reports (SARs), validating data integrity and completeness to meet federal regulatory standards</li>
+            <li>Used case-management and transaction-monitoring systems to review alert histories, interpret risk indicators, and prepare case files that informed analyst decisions</li>
+            <li>Researched financial-crime trends and regulatory updates to strengthen risk assessments and internal controls</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Recreation Assistant</div>
+          <div class="org">Rutgers University Recreation</div>
+          <div class="when">New Brunswick, NJ · September 2024 – Present</div>
+          <ul class="bullets">
+            <li>Manage daily operations and maintain a safe environment for 800+ patrons in line with university risk-management guidelines</li>
+            <li>Coordinate large-scale recreational events with staff, driving a 15% increase in student participation</li>
+            <li>Train new recreation assistants in operational workflows, customer service, and conflict resolution</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Community Finance &amp; Operations Volunteer</div>
+          <div class="org">La Casa de Don Pedro</div>
+          <div class="when">Newark, NJ · January 2025 – April 2025</div>
+          <ul class="bullets">
+            <li>Organized client data and maintained structured records to improve tracking for high-volume community service programs</li>
+            <li>Tracked inventory during distribution events and compiled weekly usage summaries that guided supply and planning decisions</li>
+            <li>Coordinated registration flow and improved event throughput for 300+ residents</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="wrap section-grid">
+      <h2>Leadership &amp; development</h2>
+      <ol class="timeline">
+        <li>
+          <div class="role">Career Prep Fellow</div>
+          <div class="org">Management Leadership for Tomorrow (MLT)</div>
+          <div class="when">January 2026 – Present</div>
+          <ul class="bullets">
+            <li>Accepted into a selective 18-month professional development program for high-achieving diverse talent</li>
+            <li>Complete business case studies and attend conferences hosted by Deloitte, LinkedIn, and Target</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Alternative Investments &amp; Investment Banking Fellow</div>
+          <div class="org">SEO Career</div>
+          <div class="when">September 2025 – Present</div>
+          <ul class="bullets">
+            <li>Selected for the competitive AIIB track with rigorous technical training in alternative investments and investment banking</li>
+            <li>Built financial models and company valuations, and evaluated capital structures, M&amp;A transactions, and private market deal flow</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Fellow</div>
+          <div class="org">America Needs You (ANY)</div>
+          <ul class="bullets">
+            <li>Attended career days at Apollo Global Management and Blackstone</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Member</div>
+          <div class="org">Association of Latino Professionals for America (ALPFA)</div>
+          <div class="when">September 2025 – Present</div>
+          <ul class="bullets">
+            <li>Use Tableau, SQL, and Python in data-driven finance projects and skill-building sessions</li>
+            <li>Completed 10+ professional development workshops and network with recruiters and industry professionals</li>
+          </ul>
+        </li>
+        <li>
+          <div class="role">Member</div>
+          <div class="org">Little Investment Bankers of Rutgers</div>
+          <div class="when">September 2024 – Present</div>
+          <ul class="bullets">
+            <li>Analyze equity and fixed-income markets through student-led valuation and model-building projects</li>
+            <li>Participate in investment banking workshops, mock interviews, and alumni networking events</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap section-grid">
+    <h2>Contact</h2>
+    <div>
+      <p class="lead">I'm open to internship opportunities in investing and finance, and always happy to connect with people in the industry.</p>
+      <div class="contact-links">
+        <a class="btn btn-solid" href="mailto:santos.tenorio@rutgers.edu">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/santostenorio" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="email-text">santos.tenorio@rutgers.edu</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Santos Tenorio</div>
+</footer>
+
+</body>
+</html>
